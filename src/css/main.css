@@ -388,8 +388,16 @@ body {
   cursor: pointer;
 }
 
+.form__btn--edit {
+  background-color: #2E5B7B;
+}
+
 .form__btn:hover {
-  background: #FF5E5E;
+  background: rgb(131, 48, 48);
+}
+
+.form__btn--edit:hover {
+  background-color: rgb(23, 45, 61);
 }
 
 /* Custom Switcher */

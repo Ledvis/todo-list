@@ -14,6 +14,7 @@ export default class View {
     this.authorName = this.todoWrapper.querySelector("#name");
     this.todoTitle = this.todoWrapper.querySelector("#title");
     this.todoDate = this.todoWrapper.querySelector("#date");
+    this.switch = this.todoWrapper.querySelector(".switch");
     this.viewSwitcher = this.todoWrapper.querySelector(".switch__input");
     this.switchLabel = this.todoWrapper.querySelector(".todo__check");
     this.editBtn = this.todoWrapper.querySelector(".todo__edit");
@@ -100,14 +101,14 @@ export default class View {
     document.querySelectorAll(".todo__item").forEach(item => {
       if (!item.classList.contains("todo__item--edited")) {
         item.classList.add("disabled");
-        item.querySelector(".select").setAttribute("disabled", true);
       } else if (item.classList.contains("todo__item--edited")) {
         item.querySelector("label").classList.add("disabled");
-        item.querySelector(".select").setAttribute("disabled", true);
       }
+      item.querySelector(".select").setAttribute("disabled", true);
     });
 
-    document.querySelector(".switch").classList.add("switch--disabled");
+    this.todoFormBtn.classList.add("form__btn--edit");
+    this.switch.classList.add("switch--disabled");
     this.todoPanel.classList.add("todo__panel--disabled");
   }
 
@@ -119,7 +120,8 @@ export default class View {
       item.querySelector(".select").removeAttribute("disabled");
     });
 
-    document.querySelector(".switch").classList.remove("switch--disabled");
+    this.todoFormBtn.classList.remove("form__btn--edit");
+    this.switch.classList.remove("switch--disabled");
     this.todoPanel.classList.remove("todo__panel--disabled");
   }
 
