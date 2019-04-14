@@ -109,15 +109,8 @@ export default class Model {
         done += data[i].done;
       }
 
-      cb(total, total - done, done === total);
+      cb(total, total - done, done);
     });
-  }
-
-  checkForComplete(cb) {
-    const items = this.getFromLocalStorage();
-    const done = items.every(item => item.done);
-
-    if (done) cb();
   }
 
   completeAll(done, cb) {

@@ -92,19 +92,21 @@ export default class Controller {
     }
   }
 
+  uncheck() {
+    this.view.uncheckSwitcher();
+    this.view.setSwitcherText("Check all");
+  }
+
   check() {
-    this.model.checkForComplete(() => {
-      this.view.checkSwitcher();
-      this.view.setSwitcherText("Uncheck all");
-    });
+    this.view.checkSwitcher();
+    this.view.setSwitcherText("Uncheck all");
   }
 
   toggleItem(id, done) {
     this.model.update({ id, done }, () => {
       this.view.clearFields();
       this.filter();
-      this.view.setSwitcherText("Check all");
-      this.view.uncheckSwitcher();
+
       if (done) {
         this.check();
         this.view.checkItem(id);
@@ -119,8 +121,10 @@ export default class Controller {
       this.view.renderItemsLeft(active);
       this.view.setElsVisibility(total);
 
-      if (done) {
+      if (done !== 0 && total === done) {
         this.check();
+      } else {
+        this.uncheck();
       }
     });
   }
