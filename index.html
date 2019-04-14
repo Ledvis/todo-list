@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todo</title>
+  <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/main.css">
+</head>
+
+<body>
+  <main class="todo">
+    <section class="todo__wrapper">
+      <h1 class="todo__title">
+        Todo List
+      </h1>
+      <p class="todo__intro">Get things done, or dye trying 😎️</p>
+      <div class="todo__panel">
+        <button class="todo__sort todo__sort-author" type="button" data-filter="name" data-direction="up">Sort by name</button>
+        <button class="todo__sort todo__sort-date" type="button" data-filter="date" data-direction="up">Sort by date</button>
+      </div>
+      <ul class="todo__list">
+      </ul>
+      <div class="todo__container">
+        <p class="todo__counter"></p>
+        <span class="todo__check">Check all</span>
+        <div class="switch">
+          <input class="switch__input" type="checkbox" id="switchCheckbox1">
+          <label aria-hidden="true" class="switch__label" for="switchCheckbox1">On</label>
+          <div aria-hidden="true" class="switch__marker"></div>
+        </div>
+      </div>
+      <form class="form">
+        <div class="form__inner">
+          <input id="name" class="form__input" placeholder="Enter your name" required type="text" name="name">
+          <input id="title" class="form__input" placeholder="Enter your task" required type="text" name="title">
+          <input id="date" class="form__input" placeholder="Enter your date" required type="date" name="date">
+        </div>
+        <button class="form__btn" type="submit">Add item</button>
+      </form>
+    </section>
+  </main>
+  <script src="/src/js/index.js" type="module"></script>
+</body>
+
+</html>
