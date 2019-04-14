@@ -109,7 +109,7 @@ export default class Model {
         done += data[i].done;
       }
 
-      cb(total, total - done);
+      cb(total, total - done, done === total);
     });
   }
 

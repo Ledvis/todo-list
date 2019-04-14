@@ -15,7 +15,6 @@ export default class Controller {
 
   init() {
     this.filter();
-    this.check();
   }
 
   handleItem(item) {
@@ -116,9 +115,13 @@ export default class Controller {
   filter() {
     this.model.get(this.view.renderTodoItems.bind(this.view));
 
-    this.model.count((total, active) => {
+    this.model.count((total, active, done) => {
       this.view.renderItemsLeft(active);
       this.view.setElsVisibility(total);
+
+      if (done) {
+        this.check();
+      }
     });
   }
 }
