@@ -14,7 +14,8 @@ export default class Controller {
   }
 
   init() {
-    this._filter();
+    this.filter();
+    this.check();
   }
 
   handleItem(item) {
@@ -26,7 +27,7 @@ export default class Controller {
         this.view.disableEditMode();
         this.view.clearFields();
         this.view.setBtnText("Add item");
-        this._filter();
+        this.filter();
       });
 
       this._editMode = !this._editMode;
@@ -40,7 +41,7 @@ export default class Controller {
 
       this.model.add(newItem, () => {
         this.view.clearFields();
-        this._filter();
+        this.filter();
       });
     }
   }
@@ -65,25 +66,25 @@ export default class Controller {
     this.model.remove(id, () => {
       this.view.removeItem(id);
       this.view.clearFields();
-      this._filter();
+      this.filter();
     });
   }
 
   sortItemsByDate(options) {
     this.model.sort(options, () => {
-      this._filter();
+      this.filter();
     });
   }
 
   handleStatus(id, status) {
     this.model.update({ id, status }, () => {
-      this._filter();
+      this.filter();
     });
   }
 
   hideDoneItems(done) {
     this.model.completeAll(done, () => {
-      this._filter();
+      this.filter();
     });
     if (done) {
       this.view.setSwitcherText("Uncheck all");
@@ -92,17 +93,27 @@ export default class Controller {
     }
   }
 
+  check() {
+    this.model.checkForComplete(() => {
+      this.view.checkSwitcher();
+      this.view.setSwitcherText("Uncheck all");
+    });
+  }
+
   toggleItem(id, done) {
     this.model.update({ id, done }, () => {
       this.view.clearFields();
-      this._filter();
+      this.filter();
+      this.view.setSwitcherText("Check all");
+      this.view.uncheckSwitcher();
       if (done) {
+        this.check();
         this.view.checkItem(id);
       }
     });
   }
 
-  _filter() {
+  filter() {
     this.model.get(this.view.renderTodoItems.bind(this.view));
 
     this.model.count((total, active) => {

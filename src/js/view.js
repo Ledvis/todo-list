@@ -15,6 +15,7 @@ export default class View {
     this.todoTitle = this.todoWrapper.querySelector("#title");
     this.todoDate = this.todoWrapper.querySelector("#date");
     this.switch = this.todoWrapper.querySelector(".switch");
+    this.switchInput = this.todoWrapper.querySelector(".switch__input");
     this.viewSwitcher = this.todoWrapper.querySelector(".switch__input");
     this.switchLabel = this.todoWrapper.querySelector(".todo__check");
     this.editBtn = this.todoWrapper.querySelector(".todo__edit");
@@ -136,6 +137,14 @@ export default class View {
 
   setSwitcherText(text) {
     this.switchLabel.innerHTML = text;
+  }
+
+  uncheckSwitcher() {
+    this.switchInput.checked = false;
+  }
+
+  checkSwitcher () {
+    this.switchInput.checked = true;
   }
 
   removeBtnHandler(handler) {

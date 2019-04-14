@@ -113,6 +113,13 @@ export default class Model {
     });
   }
 
+  checkForComplete(cb) {
+    const items = this.getFromLocalStorage();
+    const done = items.every(item => item.done);
+
+    if (done) cb();
+  }
+
   completeAll(done, cb) {
     const items = this.getFromLocalStorage();
 
