@@ -188,7 +188,7 @@ body {
 
 .todo__label {
   position: relative;
-  margin-right: 10px;
+  margin-right: 20px;
   transition: opacity .2s linear;
 }
 
@@ -198,10 +198,18 @@ body {
   color: rgba(255, 255, 255, 0.555);
 }
 
+.todo__label span {
+  display: block;
+}
+
 @media screen and (min-width: 768px) {
   .todo__label {
     font-size: 22px;
-    margin-right: 60px;
+    margin-right: auto;
+  }
+
+  .todo__label span {
+    display: inline;
   }
 }
 
@@ -308,6 +316,7 @@ body {
 
 @media screen and (min-width: 768px) {
   .todo__date {
+    min-width: 160px;
     font-size: 18px;
   }
 
@@ -485,7 +494,7 @@ body {
 .todo__checkbox:not(:checked)+label,
 .todo__checkbox:checked+label {
   position: relative;
-  display: block;
+  flex-shrink: 0;
   width: 20px;
   height: 20px;
   margin-right: 15px;
