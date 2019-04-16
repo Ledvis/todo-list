@@ -54,15 +54,9 @@ export default class View {
   }
 
   selectStatusHandler(handler) {
-    this.todoList.addEventListener("click", ({ target }) => {
+    this.todoList.addEventListener("change", ({ target }) => {
       if (target.classList.contains("select")) {
-        if (window.matchMedia("(min-width: 1024px)").matches) {
-          handler(target.parentNode.parentNode.dataset.id, target.value);
-        } else {
-          target.addEventListener("change", () => {
-            handler(target.parentNode.parentNode.dataset.id, target.value);
-          });
-        }
+        handler(target.parentNode.parentNode.dataset.id, target.value);
       }
     });
   }
