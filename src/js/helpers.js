@@ -15,3 +15,27 @@ export function formatDateISO(stringDate) {
 
   return [year, month, day].join("-");
 }
+
+export function addDateInputMask(input) {
+  input.addEventListener("keypress", function(evt) {
+    if (evt.keyCode < 47 || evt.keyCode > 57) {
+      evt.preventDefault();
+    }
+
+    const length = input.value.length;
+
+    if (length !== 1 || length !== 3) {
+      if (evt.keyCode == 47) {
+        evt.preventDefault();
+      }
+    }
+
+    if (length === 2) {
+      input.value += "/";
+    }
+
+    if (length === 5) {
+      input.value += "/";
+    }
+  });
+}

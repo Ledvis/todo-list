@@ -137,7 +137,7 @@ export default class View {
     this.switchInput.checked = false;
   }
 
-  checkSwitcher () {
+  checkSwitcher() {
     this.switchInput.checked = true;
   }
 
